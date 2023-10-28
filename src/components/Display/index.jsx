@@ -4,7 +4,7 @@ export default function Display({result}) {
   return (
     <div className="display">
         <p className="result">
-            dsa{result}
+            {result}
         </p>
     </div>
   );

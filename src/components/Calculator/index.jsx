@@ -16,28 +16,28 @@ export default function Calc() {
 
   const add = (evt) => {
     evt.preventDefault();
-    if (typeof parseInt(input) === "number") {
-      setSum(parseInt(sum) + parseInt(input));
+    if (typeof Number(input) === "number") {
+      setSum(Number(sum) + Number(input));
     }
     setInput(0);
   };
-
+  367.20000000000005
   const subtract = (evt) => {
     evt.preventDefault();
-    setSum(parseInt(sum) - parseInt(input));
+    setSum(Number(sum) - Number(input));
     setInput(0);
   };
 
   const multiply = (evt) => {
     evt.preventDefault();
-    setSum(parseInt(sum) * parseInt(input));
+    setSum(Number(sum) * Number(input));
     setInput(0);
   };
 
   const divide = (evt) => {
     evt.preventDefault();
-    if (parseInt(sum) !== 0 && parseInt(input) !== 0) {
-      setSum(parseInt(sum) / parseInt(input));
+    if (Number(sum) !== 0 && Number(input) !== 0) {
+      setSum(Number(sum) / Number(input));
     }
     setInput(0);
   };
@@ -50,24 +50,16 @@ export default function Calc() {
   const resetSum = (evt) => {
     evt.preventDefault();
     setSum((previousSum) => (previousSum = 0));
+    setInput((previousSum) => (previousSum = 0));
   };
 
   return (
     <>
       <section className="calc-body">
       <TopBar />
-      <Display />
-      <CalcButtons />
-        <form>
-          <h5>{sum}</h5>
-          {/* <input value={input} onChange={handleChange} type="number" />
-          <button onClick={add}>Add</button>
-          <button onClick={subtract}>Subtract</button>
-          <button onClick={multiply}>Multiply</button>
-          <button onClick={divide}>Divide</button>
-          <button onClick={resetInput}>Reset Input</button>
-          <button onClick={resetSum}>Reset Sum</button> */}
-        </form>
+      <Display result={sum}/>
+      <CalcButtons logic={{input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
+        
       </section>
     </>
   );
