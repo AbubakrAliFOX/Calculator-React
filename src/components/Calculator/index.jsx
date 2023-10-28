@@ -4,6 +4,8 @@ import "./style.css";
 // components
 
 import TopBar from "../TopBar";
+import Display from "../Display";
+import CalcButtons from "../CalcButtons";
 
 export default function Calc() {
   const [input, setInput] = useState(0);
@@ -54,6 +56,8 @@ export default function Calc() {
     <>
       <section className="calc-body">
       <TopBar />
+      <Display />
+      <CalcButtons />
         <form>
           <h5>{sum}</h5>
           {/* <input value={input} onChange={handleChange} type="number" />
