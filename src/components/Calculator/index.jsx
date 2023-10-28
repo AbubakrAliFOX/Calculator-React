@@ -56,13 +56,13 @@ export default function Calc() {
       <TopBar />
         <form>
           <h5>{sum}</h5>
-          <input value={input} onChange={handleChange} type="number" />
+          {/* <input value={input} onChange={handleChange} type="number" />
           <button onClick={add}>Add</button>
           <button onClick={subtract}>Subtract</button>
           <button onClick={multiply}>Multiply</button>
           <button onClick={divide}>Divide</button>
           <button onClick={resetInput}>Reset Input</button>
-          <button onClick={resetSum}>Reset Sum</button>
+          <button onClick={resetSum}>Reset Sum</button> */}
         </form>
       </section>
     </>

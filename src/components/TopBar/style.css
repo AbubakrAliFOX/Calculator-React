@@ -1,6 +1,18 @@
 .top-bar {
-    background-color: green;
+    /* background-color: green; */
     /* width: 100%; */
     margin: 0;
+    height: 30px;
+}
+
+img {
+    margin: 0 0 0 5px;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+}
+
+.net {
     height: 20px;
+    width: 20px;
 }
