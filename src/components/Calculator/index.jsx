@@ -9,8 +9,12 @@ import CalcButtons from "../CalcButtons";
 
 export default function Calc() {
   const [input, setInput] = useState(0);
+  const [display, setDisplay] = useState(0);
   const [sum, setSum] = useState(0);
+  const [firstNum, setFirstNum] = useState(null);
+  const [secondNum, setSecondNum] = useState(null);
   const [operation, setOperation] = useState(null);
+  const [result, setResult] = useState(null);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -60,29 +64,53 @@ export default function Calc() {
 
   const addNumber = (evt) => {
     evt.preventDefault();
-    setSum(previousSum => Number(String(previousSum) + String(evt.target.value)));
+    if (operation == null) {
+      if(firstNum == null) {
+        setFirstNum(previousFirstNum => previousFirstNum = 0);
+      }
+      setFirstNum(previousFirstNum => Number(String(previousFirstNum) + String(evt.target.value)));
+    } else {
+      if(secondNum == null) {
+        setSecondNum(previousSecondNum => previousSecondNum = 0);
+      }
+      setSecondNum(previousSecondNum => Number(String(previousSecondNum) + String(evt.target.value)));
+    }
   } 
 
   const makeOperation = (evt) => {
     evt.preventDefault();
     const currentOperation = evt.target.value;
-    if(currentOperation === '+') {
-      console.log('This is addition');
-    } else if(currentOperation === '+') {
-      console.log('This is addition');
-    } else if(currentOperation === '+') {
-      console.log('This is addition');
-    } else if(currentOperation === '+') {
-      console.log('This is addition');
+    setOperation(previousOperation => previousOperation = evt.target.value);
+  } 
+
+  const equals = (evt) => {
+    evt.preventDefault();
+    if (firstNum != null && secondNum != null && operation != null) {
+      if(operation == '+') {
+        setResult(previousResult => previousResult = (firstNum + secondNum));
+      }
+      if(operation == '-') {
+        setResult(previousResult => previousResult = (firstNum - secondNum));
+      }
+      if(operation == '/') {
+        setResult(previousResult => previousResult = (firstNum / secondNum));
+      }
+      if(operation == 'x') {
+        setResult(previousResult => previousResult = (firstNum * secondNum));
+      }
+      setFirstNum(previousFirstNum => previousFirstNum = null);
+      setSecondNum(previousSecondsetSecondNum => previousSecondsetSecondNum = null);
+      setOperation(previousOpesetOperation => previousOpesetOperation = null);
     }
   } 
+  
 
   return (
     <>
       <section className="calc-body">
       <TopBar />
-      <Display result={sum}/>
-      <CalcButtons logic={{makeOperation, addNumber, input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
+      <Display result={result} firstNum={firstNum} secondNum={secondNum} operation={operation}/>
+      <CalcButtons logic={{equals, makeOperation, addNumber, input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
       </section>
     </>
   );
