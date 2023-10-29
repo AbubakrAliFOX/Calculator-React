@@ -21,7 +21,7 @@ export default function Calc() {
     }
     setInput(0);
   };
-  367.20000000000005
+
   const subtract = (evt) => {
     evt.preventDefault();
     setSum(Number(sum) - Number(input));
@@ -59,7 +59,6 @@ export default function Calc() {
       <TopBar />
       <Display result={sum}/>
       <CalcButtons logic={{input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
-        
       </section>
     </>
   );
