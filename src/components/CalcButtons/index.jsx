@@ -28,7 +28,7 @@ export default function CalcButtons ({logic}) {
             </div>
             <div className="row justify-content-between mx-1 my-2">
                 <button className="zero-button" value={0} onClick={logic.addNumber}>0</button>
-                <button className="button number-button" onClick={logic.addNumber}>.</button>
+                <button className="button number-button" onClick={logic.addDot}>.</button>
                 <button className="button" onClick={logic.equals}>=</button>
             </div>
             {/* <input value={logic.input} onChange={logic.handleChange} type="number" /> */}

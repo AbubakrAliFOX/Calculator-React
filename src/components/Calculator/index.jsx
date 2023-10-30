@@ -78,6 +78,16 @@ export default function Calc() {
     }
   } 
 
+  const addDot = (evt) => {
+    evt.preventDefault();
+    if(firstNum !== null && operation == null) {
+      setFirstNum(previousFirstNum => String(previousFirstNum) + '.');
+    }
+    if(firstNum !== null && secondNum !== null && operation !== null) {
+      setSecondNum(previousSecondNum => String(previousSecondNum) + '.');
+    }
+  }
+
   const makeOperation = (evt) => {
     evt.preventDefault();
     if (firstNum !== null) {
@@ -120,7 +130,7 @@ export default function Calc() {
       <section className="calc-body">
       <TopBar />
       <Display result={result} firstNum={firstNum} secondNum={secondNum} operation={operation}/>
-      <CalcButtons logic={{reseter, equals, makeOperation, addNumber, input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
+      <CalcButtons logic={{addDot, reseter, equals, makeOperation, addNumber, input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
       </section>
     </>
   );
