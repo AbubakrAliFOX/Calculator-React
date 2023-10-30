@@ -65,6 +65,7 @@ export default function Calc() {
   const addNumber = (evt) => {
     evt.preventDefault();
     if (operation == null) {
+      setResult(previousResult => previousResult = null);
       if(firstNum == null) {
         setFirstNum(previousFirstNum => previousFirstNum = 0);
       }
@@ -79,8 +80,10 @@ export default function Calc() {
 
   const makeOperation = (evt) => {
     evt.preventDefault();
-    const currentOperation = evt.target.value;
-    setOperation(previousOperation => previousOperation = evt.target.value);
+    if (firstNum !== null) {
+      const currentOperation = evt.target.value;
+      setOperation(previousOperation => previousOperation = evt.target.value);
+    }
   } 
 
   const equals = (evt) => {
@@ -100,9 +103,16 @@ export default function Calc() {
       }
       setFirstNum(previousFirstNum => previousFirstNum = null);
       setSecondNum(previousSecondsetSecondNum => previousSecondsetSecondNum = null);
-      setOperation(previousOpesetOperation => previousOpesetOperation = null);
+      setOperation(previousOperation => previousOperation = null);
     }
   } 
+
+  const reseter = () => {
+    setFirstNum(previousFirstNum => previousFirstNum = null);
+    setSecondNum(previousSecondsetSecondNum => previousSecondsetSecondNum = null);
+    setOperation(previousOperation => previousOperation = null);
+    setResult(previousResult => previousResult = null);
+  }
   
 
   return (
@@ -110,7 +120,7 @@ export default function Calc() {
       <section className="calc-body">
       <TopBar />
       <Display result={result} firstNum={firstNum} secondNum={secondNum} operation={operation}/>
-      <CalcButtons logic={{equals, makeOperation, addNumber, input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
+      <CalcButtons logic={{reseter, equals, makeOperation, addNumber, input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
       </section>
     </>
   );
