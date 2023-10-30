@@ -12,13 +12,13 @@ export default function CalcButtons ({logic}) {
                 <button className="button number-button" value={7} onClick={logic.addNumber}>7</button>
                 <button className="button number-button" value={8} onClick={logic.addNumber}>8</button>
                 <button className="button number-button" value={9} onClick={logic.addNumber}>9</button>
-                <button className="button" value={'/'} onClick={logic.makeOperation}>/</button>
+                <button className="button" value={'/'} onClick={logic.makeOperation}>{String.fromCharCode(0x00F7)}</button>
             </div>
             <div className="row justify-content-between mx-1 my-2">
                 <button className="button number-button" value={4} onClick={logic.addNumber}>4</button>
                 <button className="button number-button" value={5} onClick={logic.addNumber}>5</button>
                 <button className="button number-button" value={6} onClick={logic.addNumber}>6</button>
-                <button className="button" value={'x'} onClick={logic.makeOperation}>X</button>
+                <button className="button" value={'x'} onClick={logic.makeOperation}>{String.fromCharCode(0x2A09)}</button>
             </div>
             <div className="row justify-content-between mx-1 my-2">
                 <button className="button number-button" value={1} onClick={logic.addNumber}>1</button>
