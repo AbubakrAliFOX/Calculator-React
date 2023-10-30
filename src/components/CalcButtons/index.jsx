@@ -5,7 +5,7 @@ export default function CalcButtons ({logic}) {
         <form className="button-body">
           <section className="">
             <div className="row justify-content-between mx-1">
-                <button className="col-9 reset-button px-1" onClick={logic.reseter}>AC</button>
+                <button className="col-9 reset-button px-1" onClick={logic.ACreseter}>AC</button>
                 <button className="button" value={'-'} onClick={logic.makeOperation}>−</button>
             </div>
             <div className="row justify-content-between mx-1">
@@ -31,11 +31,6 @@ export default function CalcButtons ({logic}) {
                 <button className="button number-button" onClick={logic.addDot}>.</button>
                 <button className="button" onClick={logic.equals}>=</button>
             </div>
-            {/* <input value={logic.input} onChange={logic.handleChange} type="number" /> */}
-            
-            
-            
-            {/* <button className="button" onClick={resetInput}>RI</button> */}
           </section>
         </form>
     )

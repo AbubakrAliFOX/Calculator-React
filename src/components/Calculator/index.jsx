@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import {useState} from "react";
 import "./style.css";
 
 // components
@@ -8,59 +8,10 @@ import Display from "../Display";
 import CalcButtons from "../CalcButtons";
 
 export default function Calc() {
-  const [input, setInput] = useState(0);
-  const [display, setDisplay] = useState(0);
-  const [sum, setSum] = useState(0);
   const [firstNum, setFirstNum] = useState(null);
   const [secondNum, setSecondNum] = useState(null);
   const [operation, setOperation] = useState(null);
   const [result, setResult] = useState(null);
-
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
-
-  const add = (evt) => {
-    evt.preventDefault();
-    if (typeof Number(input) === "number") {
-      setSum(Number(sum) + Number(input));
-    }
-    setInput(0);
-  };
-
-  const subtract = (evt) => {
-    evt.preventDefault();
-    if(sum) {
-      setSum(previousSum => String())
-    }
-    setSum(Number(sum) - Number(input));
-    setInput(0);
-  };
-
-  const multiply = (evt) => {
-    evt.preventDefault();
-    setSum(Number(sum) * Number(input));
-    setInput(0);
-  };
-
-  const divide = (evt) => {
-    evt.preventDefault();
-    if (Number(sum) !== 0 && Number(input) !== 0) {
-      setSum(Number(sum) / Number(input));
-    }
-    setInput(0);
-  };
-
-  const resetInput = (evt) => {
-    evt.preventDefault();
-    setInput((previousInput) => (previousInput = 0));
-  };
-
-  const resetSum = (evt) => {
-    evt.preventDefault();
-    setSum((previousSum) => (previousSum = 0));
-    setInput((previousSum) => (previousSum = 0));
-  };
 
   const addNumber = (evt) => {
     evt.preventDefault();
@@ -91,7 +42,6 @@ export default function Calc() {
   const makeOperation = (evt) => {
     evt.preventDefault();
     if (firstNum !== null) {
-      const currentOperation = evt.target.value;
       setOperation(previousOperation => previousOperation = evt.target.value);
     }
   } 
@@ -111,13 +61,17 @@ export default function Calc() {
       if(operation == 'x') {
         setResult(previousResult => previousResult = (firstNum * secondNum));
       }
-      setFirstNum(previousFirstNum => previousFirstNum = null);
-      setSecondNum(previousSecondsetSecondNum => previousSecondsetSecondNum = null);
-      setOperation(previousOperation => previousOperation = null);
+      reseter();
     }
   } 
 
   const reseter = () => {
+    setFirstNum(previousFirstNum => previousFirstNum = null);
+    setSecondNum(previousSecondsetSecondNum => previousSecondsetSecondNum = null);
+    setOperation(previousOperation => previousOperation = null);
+  }
+  
+  const ACreseter = () => {
     setFirstNum(previousFirstNum => previousFirstNum = null);
     setSecondNum(previousSecondsetSecondNum => previousSecondsetSecondNum = null);
     setOperation(previousOperation => previousOperation = null);
@@ -130,7 +84,7 @@ export default function Calc() {
       <section className="calc-body">
       <TopBar />
       <Display result={result} firstNum={firstNum} secondNum={secondNum} operation={operation}/>
-      <CalcButtons logic={{addDot, reseter, equals, makeOperation, addNumber, input, handleChange, add, subtract, multiply, divide, resetSum, resetInput}}/>
+      <CalcButtons logic={{addDot, ACreseter, equals, makeOperation, addNumber}}/>
       </section>
     </>
   );
