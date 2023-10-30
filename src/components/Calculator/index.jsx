@@ -71,7 +71,8 @@ export default function Calc() {
     setOperation(previousOperation => previousOperation = null);
   }
   
-  const ACreseter = () => {
+  const ACreseter = (evt) => {
+    evt.preventDefault();
     setFirstNum(previousFirstNum => previousFirstNum = null);
     setSecondNum(previousSecondsetSecondNum => previousSecondsetSecondNum = null);
     setOperation(previousOperation => previousOperation = null);
